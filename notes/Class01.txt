@@ -1,0 +1,172 @@
+************************testNG*************************************
+
+1.what is an XML?
+ Xml is a file format just like text, json, HTML e.tc
+
+ <project>
+     <message>"heelo world"</message>
+ </project>
+
+
+ an example for json :
+
+ {
+    "project":"project1",
+    "message":"hello world"
+
+ }
+
+ a text file:
+
+ the project is project1 and the message is hello world;
+
+
+
+
+
+POM.xml:
+
+<project>
+<version> </version>
+
+   <dependencies>
+
+
+   </dependencies>
+
+
+</project>
+
+
+1.Maven project:
+simply click on new project
+select maven from options
+and create a new project with a name
+
+maven porject saves you from hustle of adding dependencies like u do in java project (adding jasrs manually)
+in maven you can mention the dependency that u need from maven repo
+add it in the POM.xml
+reload the project
+and it is there for you to use.
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.1.0</version>
+        </dependency>
+    </dependencies>
+
+
+--------------------------------------------testNG---------------------------
+
+Test is a tool,
+it can be used to unit test, integration test e.t.c
+no mian needed if u are working with testNG
+
+
+Annotations:
+
+1.@Test:
+All the test cases must be written down under the annotation of @Test.
+
+
+whenever u run a class , it is going to execute each and every method under the annotation of
+@Test.
+
+by deafult @Test annotation follows alphabetical order of execution of the test cases
+
+e.g public void atestcase(); --> will execute first
+    public void btestcase();-->will execute second
+
+    the geeen tick indicates that test case has passed
+    the red sign idnicates the test case has failed
+
+
+
+@BeforeMethod annotation:
+
+the code under this annotation is going to execute everytime before each and every @Test execution is made
+
+
+
+@AfterMethod annotation :
+
+the code under this annotation is going to execute after every test Method (after every @TEST)
+
+
+
+----------------------------------------------Revision---------------------------------------
+1.What is xml?
+ Xml is file format
+
+2.How to create a maven project?
+
+file-->new-->project
+new Project--> build system (maven)
+
+
+3.POM.XML?
+ it is an XML file
+
+ we can add our dependencies here for the project
+
+
+4.In POM.xml how do i ad dependencies?
+
+<dependencies>
+       <dependency>
+             <groupID>Selenium.org</groupID>
+             <artifactId> selenium-java </artifactid>
+             <version>3.15.7</version>
+       </dependency>
+
+        <dependency>
+
+
+       </dependency>
+
+</dependencies>
+
+
+
+5.What are the annotations?
+
+a.@Test --> all the test cases are written in this annotation
+
+
+b.@BeforeMethod--> this runs before every @Test annotation    -->Pre-Condtions
+
+c. @AfterMethod -->  this will run after each @Test annotaion  -->Post--condition
+
+
+6. what is the purpose of enable disable?
+
+@Test(enabled=false)  --> it will not run this test case  --> we might use this if we want to not run a test case
+
+7.Depends on what is the purpose?
+
+@Test(dependsOnMethods ={"login"})   --> this test case depends on login and will be only executed if Login  "Passes";
+
+
+
+8.Priority?
+
+By default the priority is 0 --> highest order
+
+if two cases are there with 0 priority --> aphabetically ascending will be followed
+
+@Test(priority =3)
+ABC
+@Test(priority =1)
+DEF
+@Test(priority =2)
+GHI
+
+what will be the execution order of these test cases
+
+DEF
+GHI
+ABC
+----------------------------------------------------------------------------------------------------------------------
