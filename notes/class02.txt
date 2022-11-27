@@ -1,0 +1,230 @@
+***********************TestNG*************************
+Assertions:
+we are not using if else condition because even if the test case fails (i.e the conditon doesnt pass in if)
+the testNG will still show it has passed
+in order to overcome that we use
+Assertions from testNG
+the library is Assert
+and we call differnet types of assertions from it
+
+first assertion that we learned is
+1.Assert.AssertEquals(String , String)
+it comapres two strings if they are equal test case passed else fails.
+
+2.Assert.AssetTrue(boolean)-->if the boolean is True the Assertion will pass
+								if the boolean is false the assertion will fail
+
+
+1.HardAssertions
+As soon as any assertion FAIlS it doesnt check for other assertions , marks the test as failed and quits
+
+
+Assert.Assertequals(Expected value,Actual Value)-->if they are equal your test case will pass
+`												--> if they are not equal your test case is going to FAIL
+
+
+
+2.SoftAssertions:
+
+Soft asseertion will execute all assertions that are there despite of the fact that they FAIL or PASS
+and once it has evaluated them all then it will mark the test case as
+Failed or Passed
+(it marks it failed even if one assertion has failed)
+
+The advantage of using soft asssert is that we can
+see what errors we are having in other assertions that we make in the same test case
+but we cant see them if we use hardassertion as IT WILL EXIT AS SOON AS THE FIRST ASSERTION FAILS
+
+method to implement:
+1. delcare the instance
+softAssert soft =new softAssert();
+2.make assertions
+
+soft.assertEquals();
+
+3. at the end of makiing all assertions
+you must do
+soft.assertALL()
+
+this evalutes wether the test case has to be marked passed or failed
+
+
+
+
+
+
+TestNg XMl:
+Gives us the control to decide what to exceute from the whole project
+
+1. we can decide which package to execute
+2. we can decide which specific class to execute
+3. we can decide which methods to execute
+
+
+
+Task1:
+Class wise execution of Project suing testNg XML:
+
+
+<suite>
+    <test >
+
+
+        <classes>
+            <class name="class02.enableDisable"></class>
+            <class name="class01.testNGannotations"></class>
+            <class name="class02.priority"></class>
+        </classes>
+
+    </test>
+</suite>
+
+
+
+
+Task2:
+Method Wise execution
+
+<suite>
+    <test >
+    		<classes>
+    			<class>
+    		   		<methods>
+                    		<include name="ThirdTest"></include>
+                    		<include name="FourthTest"></include>
+                    		<include name="FirstTest"></include>
+                    		<include name="SecondTest"></include>
+                	</methods>
+                </class>
+              </classes>
+
+    </test>
+</suite>
+
+
+Task3: package based Execution:
+<suite name="All Test Suite">
+    <test>
+      <packages>
+          <package name="class01"></package>
+      </packages>
+    </test>
+</suite>
+
+
+
+Task4:
+Group based execution
+helps you run batch execution
+e.g you might want to run all the tst cases catogerized under smoke testing
+or you might want to run all test cases under the regression testing
+or you might want to run all the test cases belonging to login fucntionality
+
+Syntax:
+<suite>
+    <test >
+        <groups>
+            <run>
+                <include name="regression"></include>
+            </run>
+        </groups>
+        then u define class or package on which you want this to implement
+        <packages>
+            <package name="class02"></package>
+        </packages>
+
+    </test>
+
+</suite>
+
+Note:
+if you have a before or after method annotation associated with
+a particular @test annotaiton marked with some kind of group
+then you must must must mark you BEFORE AND AFTER method
+to (alwaysRun=ture)
+
+
+
+----------------------------------------------------revision----------------------------------------
+
+1. @Test --->we write all the test cases under this annotation
+2.@Before method --> Precondition  (runs before every @TEST)
+3.@Aftermethod --> Post condition
+
+4.Enabled =false (will not run)
+5.Priority ==> by default (0)  ,it follows in order 0,1,2,3,4
+6.DependsOnMethods (will only execute the method if the method on which it is depending will Pass)
+
+
+
+
+-------Assertions-----
+tells us if test case passed or failed
+
+------Hard Assertion----
+Assert.Assertequals(string 1, string 2)  ---> will pass when string1=string2
+Assert.AssertTrue(boolean)  -->       will pass wehn boolean is TRUE
+Assert.Assertfalse(boolean)  -->      will pass when boolean is False
+
+
+Note:
+If in a single test case hard assertion fails  --> it will terminate the execution of that particular test case
+and will not be testing other assertions or even executing the rest of code inside the same TEST CASE
+
+
+
+-----Soft assertions---
+
+Approach:
+1.Create an instance  SoftAssert soft =new SoftAssert()
+2.call the assert equals or assert true or assert false  from the SoftAssert
+ 			soft.assertTrue()
+ 			soft.assertEquals()
+
+3.Soft.assertAll()--> assert everything
+
+Note:
+if in a single test case your assertion fails, even then the rest of assertions will be executed.
+
+
+---------TestNG XML---------
+
+Gives us control to execute our classes/test cases in specified manner
+
+How to create testNG XMl???
+goto plugins
+install the plugin createTestNG XML
+
+RIght click on any class
+click on create Testng.XML
+Reaload from disk
+
+goto code
+reformat the code
+
+
+---------Execution-----
+1.Class Base execution --->  we can give the name of class under  <classes>
+2.MethodWise execution  --> we can include or exclude the methods we want to run from a specific class
+3.Package wise Execution--> <packages>
+4.Dual test             --> in a single <suite> we can have two <test>  in each we can define the packages or classes 								that we want to run    ---> more organized
+
+5.Group Wise execution
+<suite name="mysuite1">
+  <test name ="1stTest">
+          <groups>
+				<run>
+					<include="regression">
+				</run>
+		</groups>
+			<packages>
+ 				<package name= "class01"/>
+			</packages>
+  		</test>
+</suite>
+
+
+
+
+
+
