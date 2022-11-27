@@ -17,7 +17,7 @@ public class SoftAssertions {
 
 
     WebDriver driver;
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void launchTheWebsite(){
         WebDriverManager.chromedriver().setup();
         driver=new ChromeDriver();
@@ -25,7 +25,7 @@ public class SoftAssertions {
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
-    @Test
+    @Test(groups = "regression")
     public void invalidCredentials() {
         //username
         WebElement userName = driver.findElement(By.xpath("//input[@name='txtUsername']"));
@@ -55,7 +55,7 @@ public class SoftAssertions {
     }
 
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void closeBrowser(){
         driver.quit();
     }
