@@ -5,15 +5,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.util.concurrent.TimeUnit;
 
-public class HardAssertions {
+public class SoftAssertions {
+
 
     WebDriver driver;
     @BeforeMethod
@@ -25,8 +26,8 @@ public class HardAssertions {
         driver.manage().window().maximize();
     }
     @Test
-    public void invalidCredentials(){
-     //username
+    public void invalidCredentials() {
+        //username
         WebElement userName = driver.findElement(By.xpath("//input[@name='txtUsername']"));
         userName.sendKeys("admin");
 //        password
@@ -38,17 +39,20 @@ public class HardAssertions {
 //        invalid credentials
         WebElement errorMSG = driver.findElement(By.xpath("//span[text()='Invalid credentials']"));
         String ActualErrorMsg = errorMSG.getText();
-         String ExpectedErrorMsg="Invalid credentials";
-//   Assertion
-        Assert.assertEquals(ActualErrorMsg,ExpectedErrorMsg);
-//        confirm that the error message is displayed
-//        testing the SOUT
+        String ExpectedErrorMsg = "Invalid credential";
+//        if we want use soft Assertion we call it from the class SoftAssert by declaring an instance
+        SoftAssert soft =new SoftAssert();
+//        assertion
+        soft.assertEquals(ActualErrorMsg,ExpectedErrorMsg);
+//     /sout
         System.out.println("i am here after 1st assertion");
-        boolean isDisplayed = errorMSG.isDisplayed();
-//        assertion will pass if the paraemter boolean is "true" will fail if the parameter boolean is false
-        Assert.assertTrue(isDisplayed);
+//        check if the webelement error message isDisplayed
+        boolean isdisplayed=errorMSG.isDisplayed();
+//        assertion
+        soft.assertTrue(isdisplayed);
+//  assert all the assertions that have been made
+        soft.assertAll();
     }
-
 
 
     @AfterMethod
