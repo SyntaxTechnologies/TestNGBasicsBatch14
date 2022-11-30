@@ -1,0 +1,46 @@
+
+
+---------Data Provider-----------
+Used for dataDriven testing
+ DataProviders in TestNG are another way to pass the parameters in the test function. DataProviders pass different values to the TestNG Test Case in a single execution
+@DataProvider
+
+--> we provide our data under this annotations and should name our data provider @DataProvider(name="abc")
+
+-->in which ever test case we want to use this data we simply link the data provider to that test case
+  @Test(dataprovider="abc")
+
+//dataprovider -->use it when u have small data
+in case of larger data use excel file
+
+
+if we want our test case to utilize this dataprovider
+what do we need to do?
+@test(dataprovider ="name of dataprovider")
+public void test(){
+
+
+}
+-----------listeners in testNG---
+
+Listeners:
+
+Listeners class listen to events like test failed /pass /skipped e.t.c
+once the testcase has executed
+and it either fails /pass /skips
+depending upon the status
+listeneres class takes you to the execution of the code that you have written for the scenarios
+if your test case fails/ pass or skips
+
+
+Implentation of listeners class:
+
+listeners class implements ITestListeneres
+
+which is an interface from TestNG
+and we overRide the functions in it according to our need
+
+after that you need to link the listeners class to the class on which you want it to listen
+that can be done using TextNG.XML
+
+u define ur <listeners> tag just under <suite>
