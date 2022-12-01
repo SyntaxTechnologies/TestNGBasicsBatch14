@@ -5,11 +5,15 @@ import org.testng.annotations.*;
 public class Annotations {
 
 
-
-    @BeforeClass
-    public void beforeClass(){
-        System.out.println("i am Before class");
+@BeforeTest
+public void t(){
+    System.out.println("i am before test");
+}
+    @AfterTest
+    public void t2(){
+        System.out.println("i am after test");
     }
+
 
     @BeforeMethod
     public  void BeforeMethod(){

@@ -6,10 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -43,7 +40,10 @@ public class dataProvider {
             return loginData;
         }
 
-
+    @BeforeClass
+    public void beforeClass(){
+        System.out.println("i am Before class");
+    }
 
     @Test(dataProvider = "credentials")
     public void LoginWithInvalidCredentials(String userName, String Password, String ExpectedErrorMsg){
