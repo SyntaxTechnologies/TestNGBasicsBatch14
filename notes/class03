@@ -44,3 +44,29 @@ after that you need to link the listeners class to the class on which you want i
 that can be done using TextNG.XML
 
 u define ur <listeners> tag just under <suite>
+
+
+
+
+
+parallel testing:
+for parallel testing we need to enter only few paremters in our testng xml
+we can have them in suite or test tag
+
+if we want to execute two or more <test> in parallel we will add them in suite tag
+
+
+if we want to execute two or more <classes> in parallel we will add them in <test> tag
+
+
+e.g
+<test   parallel ="classes", thread-count="2">
+
+<classes>
+		<class name ="a"/>
+		<class name="b"/>
+</classes>
+
+</test>
+
+class a and b will execute in parallel
