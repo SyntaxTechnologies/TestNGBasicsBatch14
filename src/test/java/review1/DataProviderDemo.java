@@ -23,8 +23,8 @@ public class DataProviderDemo {
         login[0][1] = "Hum@nhrm123";
         login[1][0] = "admin";
         login[1][1] = "Hum@nhrm123";
-        login[2][0] = "admin";
-        login[2][1] = "Hum@nhrm123";
+        login[2][0] = "admin123";
+        login[2][1] = "Hum@nhrm1";
         login[3][0] = "admin";
         login[3][1] = "Hum@nhrm123";
         return login;
@@ -40,36 +40,20 @@ public class DataProviderDemo {
         driver.manage().window().maximize();
     }
 
-    @Test(groups = "regression")
-    public void invalidCredentials() {
+    @Test(dataProvider = "loginData")
+    public void invalidCredentials(String username , String Password) throws InterruptedException {
         //username
         WebElement userName = driver.findElement(By.xpath("//input[@name='txtUsername']"));
-        userName.sendKeys("admin");
+        userName.sendKeys(username);
 //        password
         WebElement password = driver.findElement(By.xpath("//input[@id = 'txtPassword']"));
-        password.sendKeys("abracadabra");
+        password.sendKeys(Password);
 //        login
         WebElement logIn = driver.findElement(By.xpath("//*[@id='btnLogin']"));
         logIn.click();
-//        invalid credentials
-        WebElement errorMSG = driver.findElement(By.xpath("//span[text()='Invalid credentials']"));
-        String ActualErrorMsg = errorMSG.getText();
-        String ExpectedErrorMsg = "Invalid credential";
-//        if we want use soft Assertion we call it from the class SoftAssert by declaring an instance
-        SoftAssert soft =new SoftAssert();
-//        assertion
-        soft.assertEquals(ActualErrorMsg,ExpectedErrorMsg);
-//     /sout
-        System.out.println("i am here after 1st assertion");
-//        check if the webelement error message isDisplayed
-        boolean isdisplayed=errorMSG.isDisplayed();
-//        assertion
-        soft.assertTrue(isdisplayed);
-        System.out.println("After all the assertions, I am sending this message");
-//  assert all the assertions that have been made
-        soft.assertAll();
-        //this should be the last statement of your test case, nothing should be executed after this
-
+        Thread.sleep(2000);
+        WebElement welcomeMessage = driver.findElement(By.id("welcome"));
+        Assert.assertTrue(welcomeMessage.isDisplayed());
     }
 
 
