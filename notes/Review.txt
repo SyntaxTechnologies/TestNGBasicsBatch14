@@ -1,0 +1,36 @@
+Review 1 -
+TestNg -
+TestNG is a tool used to perform unit and integration testing.
+
+Data driven testing -
+when one Test cases executes against multiple set of data, we call it data driven testing
+
+Annotation-
+@Test - it is a chief annotation of testng and every TC starts with it.
+By default it follows alphabetical order for execution.
+
+@BeforeMethod
+@AfterMethod
+
+@BeforeClass
+@AfterClass
+
+= if else statement's use in java/selenium
+
+Verification vs Validation
+Verification - checking the existence
+Validation - checking the correctness of the field after existence
+
+Assertions in TestNg
+
+Hard assertion
+Soft assertion
+
+Hard Assertion
+Whenever assertion fails in hard assertion - it will stop the execution.
+
+
+
+
+
+
