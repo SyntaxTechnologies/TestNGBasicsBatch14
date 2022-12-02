@@ -29,6 +29,11 @@ Soft assertion
 Hard Assertion
 Whenever assertion fails in hard assertion - it will stop the execution.
 
+Soft assertion -
+it allows us to have multiple verification and validation checkpoints
+if assertions fails in between, still it allows us to execute the code till the last
+and will give the consolidated report
+
 
 
 
