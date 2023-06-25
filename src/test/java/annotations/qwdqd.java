@@ -1,5 +1,7 @@
 package annotations;
 
 public class qwdqd {
-    asdsadsad
+    asdsadsadskadjckdsjcskdxcd
+    \dscjkdsjfckslj
+    asldkjsakdjsakda;ls
 }
